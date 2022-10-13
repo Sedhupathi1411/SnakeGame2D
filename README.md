@@ -1,5 +1,6 @@
 # Snake Game 2D
-### By Sedhupathi
+#### By Sedhupathi
+------------------
 
 Required npm and tsc
 
