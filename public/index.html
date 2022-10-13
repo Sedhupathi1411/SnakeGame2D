@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game | By Sedhupathi</title>
+    <style>
+        * {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            height: 100%;
+            width: 100%;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        canvas {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            border: 2px solid white;
+        }
+
+        #score {
+            text-align: right;
+            height: 40px;
+            line-height: 40px;
+            font-weight: bold;
+            padding-right: 10px;
+            font-size: larger;
+        }
+
+        #Over {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            font-size: 80px;
+            text-align: center;
+            vertical-align: middle;
+            transform: translate(0, -50%);
+            z-index: 100;
+            background: black;
+        }
+
+        #Over em {
+            font-size: 30px;
+            padding: 10px;
+        }
+
+        #Over span {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="Over" onclick="initiate()">
+        Snake Game <br />
+        <em>Use Arrow Keys in PC & Swipe in touch devices</em> <br />
+        <span>(Click 2 Play)</span>
+    </div>
+
+    <div id="score">Score: 0</div>
+
+
+    <!-- Scripts -->
+    <script src="./main.js"></script>
+</body>
+
+</html>
