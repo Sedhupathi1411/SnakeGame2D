@@ -1,9 +1,8 @@
 # Snake Game 2D
-#### By Sedhupathi
+
+## Screenshots
+![Screenshot](./screenshots.png)
+
 ------------------
 
-Required npm and tsc
-
-Use `npm run build` (to compile the TS into JS)
-
-Then run a server on "public" directory or just open "public/index.html" in browser.
+Live demo: https://snake-game-by-sedhu.netlify.app

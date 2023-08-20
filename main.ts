@@ -4,17 +4,24 @@ const scoreElt = document.getElementById("score") as HTMLElement;
 
 // Constants
 const X = 0, Y = 1;
-const bSize = 25;
-const rows = Math.floor((screen.height - 45) / bSize);
-const cols = Math.floor((screen.width - 10) / bSize);
+const bSize = 30;
+const rows = Math.floor((innerHeight - 45) / bSize);
+const cols = Math.floor((innerWidth < 700 ? (innerWidth - 10) : 690) / bSize);
 const cWidth = canvas.width = cols * bSize;
 const cHeight = canvas.height = rows * bSize;
 const frameTime = 150;
 var interval = 0;
 
+const isMobileDevice = navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i);
+
 // Types
 type Vec2 = [number, number];
-
 
 // Variables
 var snake: Vec2[] = [[3, 2], [2, 2], [1, 2]];
@@ -34,8 +41,12 @@ function update() {
         // Draw Fruit
         ctx.fillStyle = "red";
         ctx.beginPath();
-        let r = bSize / 2;
-        ctx.arc((fruits[j][X] * bSize) + r, fruits[j][Y] * bSize + r, r, 0, 2 * Math.PI);
+        let extra = bSize * 0.1;
+        ctx.roundRect(
+            (fruits[j][X] * bSize) - extra, (fruits[j][Y] * bSize) - extra,
+            bSize + (2 * extra), bSize + (2 * extra), 10
+        );
+        // ctx.arc((fruits[j][X] * bSize) + r, fruits[j][Y] * bSize + r, r, 0, 2 * Math.PI);
         ctx.closePath();
         ctx.fill();
 
@@ -98,8 +109,8 @@ window.onkeydown = (e) => {
 
         let mod = (n: number) => Math.sign(n) * n;
 
-        if(mod(x) > mod(y)) dir = [dir[X] || Math.sign(x), 0];
-        else if(mod(x) < mod(y)) dir = [0, dir[Y] || Math.sign(y)];
+        if (mod(x) > mod(y)) dir = [dir[X] || Math.sign(x), 0];
+        else if (mod(x) < mod(y)) dir = [0, dir[Y] || Math.sign(y)];
     }
 }
 
@@ -134,7 +145,7 @@ function gameOver() {
 function initiate() {
     document.body.appendChild(canvas);
     generateFruit();
-    document.body.requestFullscreen();
+    if (isMobileDevice) document.body.requestFullscreen();
     document.body.removeChild(document.getElementById("Over") as HTMLElement);
     interval = setInterval(update, frameTime);
 }

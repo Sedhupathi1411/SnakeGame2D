@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Sedhupathi1411/snake-game/issues"
   },
-  "homepage": "https://github.com/Sedhupathi1411/snake-game#readme"
+  "homepage": "https://github.com/Sedhupathi1411/snake-game#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
 }
